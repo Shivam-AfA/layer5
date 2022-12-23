@@ -16,6 +16,7 @@ const BlogList = ({
   setGridView,
   pageContext,
   data,
+  theme
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
@@ -37,8 +38,7 @@ const BlogList = ({
   const header = tag
     ? `${totalCount} post${totalCount === 1 ? "" : "s"} tagged with "${tag}"`
     : category
-      ? `${totalCount} post${
-        totalCount === 1 ? "" : "s"
+      ? `${totalCount} post${totalCount === 1 ? "" : "s"
       } categorized as "${category}"`
       : "Blog";
 
@@ -79,7 +79,7 @@ const BlogList = ({
                 {currentPosts.length > 0 &&
                   currentPosts.map(({ id, frontmatter, fields }) => (
                     <Col xs={12} key={id}>
-                      <Card frontmatter={frontmatter} fields={fields} />
+                      <Card theme={theme} frontmatter={frontmatter} fields={fields} />
                     </Col>
                   ))}
                 <Col>
